@@ -20,7 +20,7 @@ public class FlightController {
     public Map FindFlightPaging()  throws  Exception {
         Map<String, Object> map = new HashMap<>();
 
-        map.put("msg", "");
+        map.put("msg", "-");
         map.put("count", "");
         map.put("data", "");
         return map;
