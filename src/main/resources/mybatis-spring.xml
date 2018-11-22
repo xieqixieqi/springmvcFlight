@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <context:component-scan base-package="com.zking.flight"></context:component-scan>
+
+
+    <!--连接数据库-->
+    <bean id="basicDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/flight"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="sasa"></property>
+        <!--初始化连接数量-->
+        <property name="initialSize" value="20"></property>
+        <!--最大的连接数量-->
+        <property name="maxActive" value="100"></property>
+        <!--连接池最大的空闲-->
+        <property name="maxIdle" value="20"></property>
+        <property name="minIdle" value="1"></property>
+        <!--最大的等待时间-->
+        <property name="maxWait" value="6000"></property>
+    </bean>
+
+
+    <!--配置sessionfactory-->
+    <bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="basicDataSource"></property>
+        <property name="typeAliasesPackage" value="com.zking.flight.pojo"></property>
+    </bean>
+
+
+    <!--自动扫描mapper的接口并且实现接口(mybatis-spring包)-->
+    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.zking.flight.mapper"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean"></property>
+    </bean>
+
+
+    <!--配置事务处理器-->
+    <bean id="dataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="basicDataSource"></property>
+    </bean>
+
+
+
+
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
+</beans>

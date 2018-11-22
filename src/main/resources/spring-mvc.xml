@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+    <!--&lt;!&ndash;用注解注入bean并且指定查找范围&ndash;&gt;-->
+    <context:component-scan base-package="com.zking.flight.controller"></context:component-scan>
+
+
+    <!--&lt;!&ndash;设置controller的返回的前缀和后缀  springmvc包&ndash;&gt;-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+
+    <!--&lt;!&ndash;设置全部组件不可拦截&ndash;&gt;-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+
+    <!--&lt;!&ndash;处理中文乱码以及避免执行JSON格式的会后自动下载文件&ndash;&gt;-->
+    <bean id="messageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/json;charset=UTF-8</value>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="handlerAdapter"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="messageConverter"></ref>
+            </list>
+        </property>
+    </bean>
+
+
+    <!--&lt;!&ndash;4) 单独处理图片、样式、js等资源 &ndash;&gt;-->
+    <mvc:resources location="/assets/" mapping="/assets/**"/>
+    <mvc:resources location="/css/" mapping="/css/**"/>
+    <mvc:resources location="/font/" mapping="/font/**"/>
+    <mvc:resources location="/images/" mapping="/images/**"/>
+    <mvc:resources location="/js/" mapping="/js/**"/>
+    <mvc:resources location="/layui/" mapping="/layui/**"/>
+    <mvc:resources location="/staticjs/" mapping="/staticjs/**"/>
+
+</beans>
