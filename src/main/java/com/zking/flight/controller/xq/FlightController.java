@@ -12,6 +12,7 @@ import java.util.Map;
 @Controller
 public class FlightController {
 
+
     @ResponseBody
     @RequestMapping(value = "FindFlightPaging")
     public Map FindFlightPaging()  throws  Exception {
