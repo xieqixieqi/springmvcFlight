@@ -21,6 +21,7 @@ public class FlightController {
         Map<String, Object> map = new HashMap<>();
 
         map.put("msg", "-");
+        System.out.println("分机提交");
         map.put("count", "");
         map.put("data", "");
         return map;
