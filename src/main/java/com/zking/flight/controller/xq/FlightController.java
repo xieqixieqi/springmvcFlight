@@ -20,7 +20,7 @@ public class FlightController {
     public Map FindFlightPaging()  throws  Exception {
         Map<String, Object> map = new HashMap<>();
         map.put("msg", "1-");
-        System.out.println("711主机提交");
+        System.out.println("7711主机提交");
         System.out.println("主机提交");
         System.out.println("分1111提交");
         map.put("count", "");
