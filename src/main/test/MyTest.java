@@ -5,8 +5,10 @@ import org.jsoup.select.Elements;
 
 public class MyTest {
 
-
     public static void main(String[] args)  throws  Exception {
+
+
+
 
 
         Document document = Jsoup.connect("https://flights.ctrip.com/itinerary/oneway/csx-sha").get();
@@ -18,7 +20,8 @@ public class MyTest {
                 .select("div.logo")
                 .select("div.logo-item.flight_logo")
                 .select("div");
-
+        System.out.println("哈哈哈哈");
+        System.out.println("哈哈哈哈");
         for (Element element : elements) {
             System.out.println(element);
         }
