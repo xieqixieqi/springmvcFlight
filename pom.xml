@@ -48,6 +48,10 @@
     <dependencies>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
@@ -61,6 +65,9 @@
 =======
 
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
@@ -69,6 +76,7 @@
             <version>1.8.3</version>
         </dependency>
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
                 &lt;!&ndash; 引入struts的依赖 &ndash;&gt;
                 <dependency>
@@ -209,6 +217,8 @@
                     <version>${jackson-version}</version>
                 </dependency>
 =======
+=======
+>>>>>>> Stashed changes
 
         <!-- 引入struts的依赖 -->
         <dependency>

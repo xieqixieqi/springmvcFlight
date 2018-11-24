@@ -26,7 +26,6 @@ public class FlightController {
         System.out.println("q2分1111提交");
         map.put("msg", "-");
         System.out.println("分机8887提交");
-
         map.put("count", "");
         map.put("data", "");
         return map;
